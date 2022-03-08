@@ -1,0 +1,545 @@
+/*================= RESET ========================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+    padding: 4rem 1rem;
+  }
+
+.swiper-slider{
+    height: auto;
+}
+
+.swiper-pagination-bullet-active{
+    background: var(--base-color);
+}
+
+/*================= VARIABLES ========================*/
+:root{
+    --hue: 145;
+    --body-color: hsl(var(--hue) 0% 98%);
+    --font-primary: hsl(var(--hue), 0%, 22%);
+    --font-title: hsl(var(--hue), 0%, 7%);
+    --base-color: hsl(var(--hue), 78%, 69%);
+    --secondary-color: hsl(var(--hue), 52%, 56%);
+    --title-size: 1.875rem;
+    --subtitle-size: 1rem;
+    
+}
+
+/*================= BASE ========================*/
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font: 400 1rem "DM Sans", sans-serif;
+    background-color: var(--body-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+.title{
+    font: 700 var(--title-size) "Poppins", sans-serif;
+    color: var(--font-primary);
+}
+
+.button{
+    background-color: var(--base-color);
+    color: var(--body-color);
+    display: inline-flex;
+    height: 3.5rem;
+    align-items: center;
+    padding: 0 2rem;
+    border-radius: .25rem;
+    font: 500 1rem "DM Sans", sans-serif;
+    transition: background 0.3s;
+}
+
+.button:hover{
+    background: var(--secondary-color);
+}
+
+.divider-1{
+    height: 1px;
+    background: linear-gradient(
+        270deg, 
+        hsl(var(--hue), 35%, 65%), 
+        hsl(var(--hue), 60%, 88%, 0.31));
+}
+
+.divider-2{
+    height: 1px;
+    background: linear-gradient(
+        270deg, 
+        hsl(var(--hue), 60%, 88%),
+        hsl(var(--hue), 35%, 65%));
+}
+
+/*================= LAYOUT ========================*/
+#header{
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 2rem;
+    display: flex;
+    background-color: var(--body-color);
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+}
+
+#header.scroll{
+    box-shadow: 0px 0px 8px 0px rgba(40, 40, 40, 0.5);
+}
+
+p{
+    color: var(--font-primary);
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+}
+
+.logo{
+    font: 700 1.3125rem "Poppins", sans-serif;
+    color: var(--font-primary);
+}
+
+.logo span{
+    color: var(--base-color);
+}
+
+.logo-alt span{
+    color: var(--body-color);
+}
+
+.container{
+    width: 90%;
+    margin: 0 1.46rem;
+}
+
+.grid{
+    display: grid;
+    gap: 2rem;
+}
+
+.section{
+    padding: 5rem 0;
+}
+
+.section .title{
+    margin-bottom: 1rem;
+}
+
+.subtitle .subtitle{
+    font-size: var(--subtitle-size);
+}
+
+.section header{
+    margin-bottom: 4rem;
+
+}
+
+.section header strong{
+    color: var(--base-color);
+}
+
+/*================= MENU ========================*/
+
+nav .menu{
+    display: grid;
+    visibility: hidden;
+    opacity: 0;
+    top: -20rem;
+    transition: 0.3s;
+}
+
+nav .menu ul{
+    display: none;
+}
+
+nav ul li a{
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:hover{
+    color: var(--secondary-color);
+}
+
+nav ul li a::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+
+nav.show ul.grid{
+    gap: 4rem;
+}
+
+nav.show .menu{
+    visibility: visible;
+    opacity: 1;
+
+    background: var(--body-color);
+
+    height: 100vh;
+    width: 100vw;
+
+    z-index: 1;
+
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    text-align: center;
+    place-content: center;
+}
+
+nav.show .menu ul{
+    display: grid;
+}
+
+
+nav .open{
+    color:var(--base-color);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+nav .close{
+    color: var(--base-color);
+    visibility: 0;
+    opacity: 0;
+
+    z-index: 2;
+
+    position: fixed;
+    top: -1.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+    transition: 0.2s;
+}
+
+nav.show .close{
+    visibility: 1;
+    opacity: 1;
+    top: 1.5rem;
+}
+
+/*================= HOME ========================*/
+
+#home{
+    overflow: hidden;
+}
+
+#home .grid{
+    margin-top: 8.56rem;
+}
+
+#home .image{
+    position: relative;
+}
+
+#home .image::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: var(--base-color);
+    position: absolute;
+    top: -16.8%;
+    left: 7.8%;
+}
+
+#home .image img{
+    position: relative;
+    right: 2.93rem;
+}
+
+#home .image img,
+#home .image::before{
+    border-radius: 0.25rem;
+}
+
+#home .text{
+    margin: 0 1.5rem;
+    text-align: center;
+}
+
+#home .text h1{
+    margin-bottom: 1rem;
+}
+
+#home .text p{
+    margin-bottom: 2rem;
+}
+
+/*================= ABOUT ========================*/
+
+#about{
+    background: white;
+}
+
+#about .grid{
+    margin-top: 4rem;
+}
+
+#about .image{
+    position: relative;
+    width: 100vw;
+    right: 2.5rem;
+}
+
+#about .image::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: var(--base-color);
+    position: absolute;
+    top: -8.8%;
+    right: 19.2%;
+}
+
+#about .image img{
+    position: relative;
+}
+
+#about .image img,
+#about .image::before{
+    border-radius: 0.25rem;
+}
+
+#about .text{
+    margin: 0 1.5rem;
+    width: 82vw;
+}
+
+/*================= Services ========================*/
+
+.card.grid{
+    gap: 1.5rem;
+}
+
+.card {
+    padding: 3.625rem 2rem;
+    box-shadow: 0px 0px 12px rgba(0,0,0, 0.08);
+    border-bottom: 0.25rem solid var(--base-color);
+    border-radius: 0.25rem 0.25rem 0 0;
+    text-align: center;
+}
+
+.card i {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    color: var(--base-color);
+}
+
+.card .title{
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/*================= Testimonials ========================*/
+#testimonials{
+    background: white;
+}
+
+#testimonials .container{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+#testimonials header{
+    margin: 0 1.46rem;
+}
+
+#testimonials blockquote{
+    padding: 2rem;
+    box-shadow: 0px 0px 12px rgba(0,0,0, 0.08);
+    border-radius: 0.25rem;
+}
+
+#testimonials blockquote p{
+    position:relative;
+    text-indent: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--font-title);
+    font-size: 1.1rem;
+}
+
+#testimonials blockquote p span{
+    font: 700 2rem serif;
+
+    position: absolute;
+    left: -1.3rem;
+    top: -0.3rem;
+
+    color: var(--base-color);
+}
+
+.testimonials cite{
+    display: flex;
+    align-items: center;
+    font-style: normal;
+
+}
+
+.testimonials cite img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100px;
+    border: 1px solid var(--base-color);
+    object-fit: cover;
+    margin-right: 0.5rem;
+}
+
+/*================= Contact ========================*/
+
+#contact .grid{
+    gap: 4rem;
+}
+
+#contact .text p{
+    margin-bottom: 2rem;
+}
+
+#contact .button i,
+#contact ul li i{
+    font-size: 1.5rem;
+    margin-right: 0.625rem;
+}
+
+#contact ul.grid{
+    gap: 2rem;
+}
+
+#contact ul li i{
+    color: var(--base-color);
+}
+
+#contact li{
+    display: inline-flex;
+    align-items: center;
+}
+
+/*================= Footer ========================*/
+
+footer {
+    background-color: var(--base-color);
+}
+
+footer .logo{
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+footer .brand p{
+    color: var(--body-color);
+    margin-bottom: 0.75rem;
+}
+
+footer .social span{
+    color: var(--body-color);
+    font-size: 1rem;
+}
+
+footer .social a{
+    margin-right: 2rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+footer .social a:hover{
+    transform: translateY(-8px);
+}
+
+/*================= Back to Top ========================*/
+
+.back-to-top{
+    background-color: var(--secondary-color);
+    color: var(--body-color);
+
+    position: fixed;
+    right: 1rem;
+    bottom: -2rem;
+
+    padding: 1rem;
+
+    clip-path: circle();
+
+    font-size: 0.8rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.back-to-top.show{
+    visibility: visible;
+    opacity: 1;
+    bottom: 1rem;
+}
+
+.back-to-top:hover{
+    font-size: 1.2rem;
+}
+
+/*================= RESPONSIVO ========================*/
+/* REFERENCIAS DE TAMANHOS DE MEDIA QUERIES
+ -> Medium/Mobile Devices = 767 >
+ -> Large Devices / Tablets = 992 >
+ -> Large Devices / Tablets = 1023 >
+ -> Extra Large/ Desktop Devices = 1200 >
+*/
+@media (min-width: 1200px){
+    
+}
+
+@media (min-width: 1023px){
+    
+}
+
+@media (min-width: 992px){
+    :root{
+        --title-size: 2.25rem;
+        --subtitle-size: 1.125rem;
+    }
+}
+
+@media (min-width: 767px){
+    
+}
